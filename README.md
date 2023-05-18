@@ -1,11 +1,11 @@
-# SpringBoot-demo
+# SpringBoot-Microservices-demo
 
 基于 SpringBoot 2.7.11 开发
 
-1. 基本增删改查,数据分页
+1. 基本增删改查,数据查询分页
 2. CORS 跨域请求配置
 3. 保存登录态 与 用户权限验证。如果遇到前端每次刷新都需要重新登录,首先检查登录后的setCookie生效了吗,如果生效了,看看每次请求时是不是忘记了携带cookie...
-4. knife4j 接口文档,v3版本支持 openapi ,进行快速生成前端请求代码
+4. knife4j 接口文档,v3版本支持 openapi ,可快速生成前端请求代码,提高开发效率
 5. nacos 注册微服务
 6. 基于 OpenFeign 进行微服务远程调用
 7. gateway 网关拦截与转发
@@ -20,6 +20,9 @@
 
 
 新建表user
+
+加密前的密码为 123
+
 ```mysql
 CREATE DATABASE demo;
 
@@ -53,18 +56,18 @@ INSERT INTO `user` VALUES (12, 'user10', '62cc2d8b4bf2d8728120d052163a77df', 'us
 
 ## 启动前注意事项
 
-### 文件更改
+### 1. 文件更改
 
 1. 修改 src/main/resources/application.yml 中的数据库配置
 2. 在 feign-api 项目中,进行 maven install,使本地拥有 feign-api 依赖包
 
-### 搭建本地 nacos 服务器
+### 2. 搭建本地 nacos 服务器
 
 [nacos下载地址](https://github.com/alibaba/nacos/releases/download/2.2.2/nacos-server-2.2.2.zip)
 
 解压后,修改  /conf/application.properties
 
-第153行,自定义一个密钥
+第153行左右,密钥为空,自定义一个密钥
 
 然后打开 /bin
 
@@ -78,7 +81,7 @@ cmd  输入
 
 账号密码均默认为 nacos
 
-### 搭建本地 Sentinel 服务器
+### 3. 搭建本地 Sentinel 服务器
 
 [sentinel 下载地址](https://github.com/alibaba/Sentinel/releases/download/1.8.6/sentinel-dashboard-1.8.6.jar)
 
