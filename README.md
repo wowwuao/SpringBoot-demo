@@ -4,18 +4,18 @@
 
 1. 基本增删改查,数据查询分页
 2. CORS 跨域请求配置
-3. 保存登录态 与 用户权限验证。如果遇到前端每次刷新都需要重新登录,首先检查登录后的setCookie生效了吗,如果生效了,看看每次请求时是不是忘记了携带cookie...
-4. knife4j 接口文档,v3版本支持 openapi ,可快速生成前端请求代码,提高开发效率
-5. nacos 注册微服务
+3. 登录态的保存 与 用户权限验证。如果遇到前端每次刷新都需要重新登录,首先检查登录后的SetCookie是否生效,如果生效,看看每次请求时是不是忘记了携带cookie......
+4. Knife4j 接口文档,v3版本支持 openapi ,可基于插件快速生成前端请求代码,提高开发效率
+5. Nacos 注册微服务
 6. 基于 OpenFeign 进行微服务远程调用
-7. gateway 网关拦截与转发
-8. sentinel 流量监控
+7. Gateway 网关拦截与转发
+8. Sentinel 流量监控
 
 
 
 供 初学者学习 与 开发时快速CV相应功能
 
-如果遇到问题,首先考虑是不是依赖项版本之间有冲突 或者 中文目录名
+如果遇到问题,首先考虑是不是依赖项版本之间有冲突 或者 存在中文目录名
 
 
 
@@ -33,7 +33,7 @@ CREATE TABLE `user`  (
   `userAccount` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '账号',
   `userPassword` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '密码',
   `userName` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '用户昵称',
-  `userRole` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user' COMMENT '用户角色：user/admin/ban',
+  `userRole` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user' COMMENT '用户角色：user/admin',
   `createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updateTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `isDelete` tinyint NOT NULL DEFAULT 0 COMMENT '是否删除',
@@ -59,13 +59,13 @@ INSERT INTO `user` VALUES (12, 'user10', '62cc2d8b4bf2d8728120d052163a77df', 'us
 ### 1. 文件更改
 
 1. 修改 src/main/resources/application.yml 中的数据库配置
-2. 在 feign-api 项目中,进行 maven install,使本地拥有 feign-api 依赖包
+2. 在 feign-api 项目中,进行 maven install,使本地拥有 feign-api 依赖包，然后 maven 重新加载 consumer 项目
 
 ### 2. 搭建本地 nacos 服务器
 
 [nacos下载地址](https://github.com/alibaba/nacos/releases/download/2.2.2/nacos-server-2.2.2.zip)
 
-解压后,修改  /conf/application.properties
+解压后,修改  /conf/application.properties 文件
 
 第153行左右,密钥为空,自定义一个密钥
 
@@ -98,3 +98,4 @@ http://127.0.0.1:8500
 账号密码均默认为 sentinel
 
 sentinel只有网关被请求后才会有服务名称与数据显示,所以进入后为空是正常现象
+
