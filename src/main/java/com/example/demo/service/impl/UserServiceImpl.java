@@ -2,8 +2,8 @@ package com.example.demo.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.demo.common.BusinessException;
-import com.example.demo.common.ErrorCode;
+import com.example.common.exception.BusinessException;
+import com.example.common.model.ErrorCode;
 import com.example.demo.constant.UserConstant;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.model.user.dto.UserLoginRequest;

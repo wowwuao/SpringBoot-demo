@@ -2,7 +2,11 @@ package com.example.demo.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.common.exception.BusinessException;
+import com.example.common.model.ErrorCode;
+import com.example.common.utils.ResultUtils;
 import com.example.demo.common.*;
+import com.example.common.base.BaseResponse;
 import com.example.demo.model.user.dto.UserLoginRequest;
 import com.example.demo.model.user.dto.UserQueryRequest;
 import com.example.demo.model.user.dto.UserRegisterRequest;
@@ -14,9 +18,7 @@ import com.example.demo.utils.ConvertUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
-
 import lombok.extern.slf4j.Slf4j;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 

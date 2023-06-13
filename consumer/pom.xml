@@ -52,15 +52,23 @@
             <artifactId>feign-httpclient</artifactId>
             <version>11.8</version>
         </dependency>
+<!--        本地feign远程调用客户端-->
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>feign-api</artifactId>
-            <version>0.0.5</version>
+            <version>0.0.6</version>
         </dependency>
+<!--        负载均衡-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-loadbalancer</artifactId>
             <version>3.1.6</version>
+        </dependency>
+<!--        引入本地common依赖-->
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

@@ -1,5 +1,9 @@
 package com.example.demo.controller;
 
+import com.example.common.base.BaseResponse;
+import com.example.common.exception.BusinessException;
+import com.example.common.model.ErrorCode;
+import com.example.common.utils.ResultUtils;
 import com.example.demo.model.user.User;
 import com.example.demo.model.user.UserVO;
 import com.example.demo.service.UserService;
@@ -23,9 +27,11 @@ public class FeignController {
 
     @GetMapping("/user/{id}")
     public UserVO userQueryByIdUsingFeign(@PathVariable("id") Long id){
-        User user = userService.getById(id);
-        UserVO userVo = new UserVO();
-        BeanUtils.copyProperties(user, userVo);
-        return userVo;
+            User user = userService.getById(id);
+            UserVO userVo = new UserVO();
+            if(user != null){
+                BeanUtils.copyProperties(user, userVo);
+            }
+            return userVo;
     }
 }
